@@ -12,7 +12,7 @@ ENV PATH="/home/user/.local/bin:$PATH"
 WORKDIR /app
 
 # Copy the requirements file from `api/` and install dependencies
-COPY --chown=user api/requirements.txt .
+COPY --chown=user ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirement.txt
 
 # Copy the full project after installing dependencies
@@ -20,6 +20,7 @@ COPY --chown=user . .
 
 # Expose the required port
 EXPOSE 7860
+COPY --chown=user . /app
 
 # Run the FastAPI app using Uvicorn
-CMD ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
