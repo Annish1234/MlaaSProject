@@ -42,7 +42,7 @@ jobs:
 
       - name: Deploy to Hugging Face Spaces
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}  # Use secure Hugging Face token
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}  # Use secure Hugging Face token updated in github
         run: |
           git remote add huggingface https://user:$HF_TOKEN@huggingface.co/spaces/annishjk01/secondSpace || true
           git fetch huggingface main || true  # Fetch latest changes from HF (ignore errors)
